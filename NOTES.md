@@ -51,3 +51,20 @@ for these rows so they drop out of storey-based analysis without being deleted.
 ## Type conversion
 Zero rows fail conversion on month, resale_price, floor_area_sqm or
 lease_commence_date. No nulls in key columns. Source data is clean.
+
+## 2017+ validation and a source data error
+Parsed HDB's text remaining_lease ("61 years 04 months") and compared against
+the derived figure for all 239,887 rows in resale_2017_onwards.csv.
+135 rows fall between -1.17 and -1.08 years: the same anniversary effect,
+measured against month precision rather than rounded years.
+One row is a genuine source error: block 37 TEBAN GDNS RD, sale 2025-01,
+lease_commence_date recorded as 1981. The other 20 recorded sales of that block
+all say 1966, and the adjacent 2025-06 sale is consistent with a 99-year lease
+from 1966. HDB's own remaining_lease on the bad row (40 years 01 month) also
+implies 1966.
+Left uncorrected. Source data is reproduced as published; the discrepancy is
+documented rather than silently edited.
+
+Overall: derived remaining_lease_years agrees with HDB's published value to
+within one year on all 277,040 rows where comparison is possible, with one
+exception traced to a source error.
