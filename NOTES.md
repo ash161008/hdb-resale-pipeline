@@ -68,3 +68,24 @@ documented rather than silently edited.
 Overall: derived remaining_lease_years agrees with HDB's published value to
 within one year on all 277,040 rows where comparison is possible, with one
 exception traced to a source error.
+
+## Building-level conflicts (address key investigation)
+Only 3 addresses in ~10,000 have more than one lease_commence_year.
+No address spans more than one town, so (block, street_name) is a viable key
+and town need not be part of it.
+
+  21 TEBAN GDNS RD    1978 (54 sales, 1990-01 to 1999-10)
+                      2013 (78 sales, 2016-08 to 2026-08)
+                      17-year sales gap -> redevelopment, two physical buildings
+
+  37 TEBAN GDNS RD    1966 (20 sales) / 1981 (1 sale, 2025-01)
+                      single-row typo, confirmed against adjacent 2025-06 sale
+
+  114 JURONG EAST ST 13  1981 (10 sales, to 2014-10)
+                         1982 (3 sales, from 2015-04)
+                         6-month gap, 1-year delta, and the change spans two
+                         source files on each side -> HDB records correction,
+                         not a rebuild
+
+Population of 3 is small enough to handle case by case rather than by rule.
+Decision pending on each.
