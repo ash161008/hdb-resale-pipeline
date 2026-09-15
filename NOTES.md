@@ -101,3 +101,17 @@ Decision pending on each.
                      post-2015 sales (66 in 2015, 65 in 2016, 55y11m in
                      2025-12). Majority vote would have given 1981 and been
                      wrong; the newer value is the corrected one.
+
+## Star schema
+dim_building (10,005 rows / 10,004 addresses), dim_town (27), dim_flat_type (8),
+dim_flat_model (21), dim_storey (25), dim_date (441 months, no gaps).
+fact_resale: 986,090 rows, exact match to source, foreign keys to all six.
+
+dim_building uses surrogate keys with a validity range (Type 2 SCD), which is
+what lets block 21 TEBAN GDNS RD carry two rows for the same address. The
+fact-to-building join matches on address AND sale date within the range.
+
+fact_resale recomputes remaining_lease_years from dim_building.lease_commence_year
+rather than the raw value, so the three resolved conflicts are corrected
+structurally. Verified: block 37 TEBAN GDNS RD 2025-01 shows 40 in the fact
+table vs 55 in the raw data.
