@@ -89,3 +89,15 @@ and town need not be part of it.
 
 Population of 3 is small enough to handle case by case rather than by rule.
 Decision pending on each.
+
+## Resolution of the three conflicts
+21 TEBAN GDNS RD  -> two dimension rows (1978, 2013). Redevelopment: 17-year
+                     sales gap, 35-year lease jump. Genuinely two buildings.
+37 TEBAN GDNS RD  -> one row, 1966. Single-row typo; HDB's own remaining_lease
+                     on that row (40 years 01 month) contradicts its 1981 and
+                     confirms 1966.
+114 JURONG EAST ST 13 -> one row, 1982. HDB records correction, not a typo.
+                     Their remaining_lease agrees with 1982 in all three
+                     post-2015 sales (66 in 2015, 65 in 2016, 55y11m in
+                     2025-12). Majority vote would have given 1981 and been
+                     wrong; the newer value is the corrected one.
